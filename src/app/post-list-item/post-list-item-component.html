@@ -1,0 +1,27 @@
+
+<li [ngClass]="{
+    'list-group-item postListItem': true,
+    'list-group-item-success': postLoveIts > 0,
+    'list-group-item-danger': postLoveIts < 0 }"
+>
+  <article>
+    <header>
+      <h1 class="postTitle">{{ postTitle }}</h1>
+      <div class="postDate">Posté le {{ postCreatedAt | date : "dd/MM/y à H:mm"}}</div>
+    </header>
+    <section>
+      <div [ngClass]="{ 'postContent': true, 'bg-success': postLoveIts > 0, 'bg-danger': postLoveIts < 0 }" disabled>{{ postContent }}</div>
+    </section>
+    <footer>
+      <aside>
+        <button class="btn btn-success" (click)="this.onSetLoveIts(1)">J'aime</button>
+        <button class="btn btn-danger" (click)="this.onSetLoveIts(-1)">Je n'aime pas</button>
+      </aside>
+      <aside >
+      <button class="btn btn-danger" (click)="this.onDelete()">Supprimer le post</button>
+      </aside>
+    </footer>
+  </article>
+
+</li>
+
